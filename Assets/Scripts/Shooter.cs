@@ -12,7 +12,7 @@ public class Shooter : MonoBehaviour
     {
         Bullet bullet = Shooting?.Invoke();
 
-        bullet.SetPosition((Vector2)transform.position + _bulletSpawnOffset);
-        bullet.SetSpeed(_speedX);
+        bullet.Mover.SetPosition((Vector2)transform.position + _bulletSpawnOffset);
+        bullet.Mover.SetSpeed(_speedX);
     }
 }

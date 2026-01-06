@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] private Spawner _spawner;
+    [SerializeField] private BulletSpawner _spawner;
     [SerializeField] private Shooter _shooter;
 
     private void OnEnable()

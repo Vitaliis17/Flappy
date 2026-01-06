@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5177113922107674883}
   - component: {fileID: 6102738352237473767}
   - component: {fileID: 2013237388329161672}
+  - component: {fileID: -456988447940484571}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -113,3 +114,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-456988447940484571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213627883552620117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6e24962c060664cbaa432b9abbf433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy

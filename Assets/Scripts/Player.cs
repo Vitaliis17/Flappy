@@ -8,11 +8,16 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Shooter _shooter;
     [SerializeField] private Jumper _jumper;
+    [SerializeField] private Health _health;
 
     private Rigidbody2D _rigidbody;
 
     private void Awake()
-        => _rigidbody = GetComponent<Rigidbody2D>();
+    {
+        _health.Initialize();
+
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
 
     private void OnEnable()
     {
