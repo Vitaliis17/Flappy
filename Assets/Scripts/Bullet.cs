@@ -10,5 +10,13 @@ public class Bullet : MonoBehaviour
     {
         _collider = GetComponent<Collider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
+
+        _rigidbody.gravityScale = 0f;
     }
+
+    public void SetSpeed(float speed)
+        => _rigidbody.linearVelocityX = speed;
+
+    public void SetPosition(Vector2 position)
+        => transform.position = position;
 }

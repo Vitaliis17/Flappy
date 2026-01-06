@@ -3,15 +3,16 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    [SerializeField] private Vector2 _speed;
+    [SerializeField] private float _speedX;
+    [SerializeField] private Vector2 _bulletSpawnOffset;
 
     public event Func<Bullet> Shooting;
 
     public void Shoot()
     {
         Bullet bullet = Shooting?.Invoke();
-        
-        if(bullet.TryGetComponent(out Rigidbody2D rigidbody))
-            rigidbody.AddForce(_speed);
+
+        bullet.SetPosition((Vector2)transform.position + _bulletSpawnOffset);
+        bullet.SetSpeed(_speedX);
     }
 }
