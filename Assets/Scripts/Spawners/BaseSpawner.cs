@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using System;
 
-public abstract class BaseSpawner<T> : MonoBehaviour where T : Component
+public abstract class BaseSpawner<T> : MonoBehaviour where T : Component, ISpawnable
 {
     protected ObjectPool<T> Pool;
 
@@ -17,11 +17,20 @@ public abstract class BaseSpawner<T> : MonoBehaviour where T : Component
     private void OnDisable()
         => Disabling?.Invoke();
 
-    public void Release(T element)
-        => Pool.Release(element);
+    private void Release(ISpawnable element)
+    {
+        element.Releasing -= Release;
 
-    public T GetBullet()
-        => Pool.Get();
+        Pool.Release((T)element);
+    }
+
+    public T GetElement()
+    {
+        T element = Pool.Get();
+        element.Releasing += Release;
+
+        return element;
+    }
 
     private T Create()
         => Instantiate(_prefab, _folder);

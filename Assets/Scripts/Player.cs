@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
+    public Health Health { get { return _health; } }
+
     private void Awake()
     {
         _health.Initialize();

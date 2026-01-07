@@ -10,7 +10,7 @@ public class Health
 
     private int _currentValue;
 
-    public event Action Destroying;
+    public event Action Died;
 
     public void Initialize()
         => _currentValue = _maxValue;
@@ -23,7 +23,7 @@ public class Health
             _currentValue = _minValue;
 
         if(IsAlive() == false)
-            Destroying?.Invoke();
+            Died?.Invoke();
     }
 
     public bool IsAlive()

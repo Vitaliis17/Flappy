@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5196570350060947740}
   - component: {fileID: 3371857739764251041}
   - component: {fileID: 8944047287054202920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,5 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _jumpingReader: {fileID: 0}
   _shootingReader: {fileID: 0}
+  _shooter: {fileID: 0}
   _jumper:
     _force: 0
+  _health:
+    _maxValue: 0
