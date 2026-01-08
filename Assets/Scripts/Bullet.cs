@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour, ISpawnable
 
         _rigidbody.gravityScale = 0f;
 
-        Mover = new(_rigidbody, transform);
+        Mover = new(_rigidbody);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

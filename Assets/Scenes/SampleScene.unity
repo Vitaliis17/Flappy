@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 138692526}
   - component: {fileID: 138692527}
+  - component: {fileID: 138692528}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -165,6 +166,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   _prefab: {fileID: -456988447940484571, guid: 73be81a1de245eb4da2919050af942b5, type: 3}
   _folder: {fileID: 138692526}
+--- !u!114 &138692528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138692525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d082fde831affa43bb88fb3b57c98e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPlanner
+  _wave: {fileID: 11400000, guid: 6fad45ec91a40b14d924445e2e589400, type: 2}
 --- !u!1 &224658124
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 327696985}
   - component: {fileID: 327696984}
+  - component: {fileID: 327696986}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -289,6 +304,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &327696986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327696983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08211da2a05a86242a6b5cb6bb68c2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnController
+  _spawner: {fileID: 138692527}
+  _planner: {fileID: 138692528}
 --- !u!1 &418321022
 GameObject:
   m_ObjectHideFlags: 0

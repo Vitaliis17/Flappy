@@ -1,6 +1,6 @@
+using System;
 using UnityEngine;
 using UnityEngine.Pool;
-using System;
 
 public abstract class BaseSpawner<T> : MonoBehaviour where T : Component, ISpawnable
 {
@@ -24,9 +24,11 @@ public abstract class BaseSpawner<T> : MonoBehaviour where T : Component, ISpawn
         Pool.Release((T)element);
     }
 
-    public T GetElement()
+    public T GetElement(Vector2 position)
     {
         T element = Pool.Get();
+
+        element.transform.position = position;
         element.Releasing += Release;
 
         return element;

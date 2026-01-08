@@ -1,5 +1,1 @@
-public class EnemySpawner : BaseSpawner<Enemy> 
-{
-    private void OnEnable()
-        => GetElement();
-}
+public class EnemySpawner : BaseSpawner<Enemy> {}
