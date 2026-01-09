@@ -166,6 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   _prefab: {fileID: -456988447940484571, guid: 73be81a1de245eb4da2919050af942b5, type: 3}
   _folder: {fileID: 138692526}
+  _bulletSpawner: {fileID: 1896627503}
+  _planner: {fileID: 138692528}
 --- !u!114 &138692528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +272,6 @@ GameObject:
   m_Component:
   - component: {fileID: 327696985}
   - component: {fileID: 327696984}
-  - component: {fileID: 327696986}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -307,20 +308,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &327696986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327696983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08211da2a05a86242a6b5cb6bb68c2a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnController
-  _spawner: {fileID: 138692527}
-  _planner: {fileID: 138692528}
 --- !u!1 &418321022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,25 +1012,17 @@ Transform:
   - {fileID: 783931221}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1646768780 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5193258361416135333, guid: e48a8bdb811c8dc4a8cd55f23aa1b040, type: 3}
+--- !u!114 &1646768784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2235878446818299650, guid: e48a8bdb811c8dc4a8cd55f23aa1b040, type: 3}
   m_PrefabInstance: {fileID: 82162619810647117}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1646768784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646768780}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c18a005a5322e44ead83d73c1eb3966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
-  _speedX: 2
-  _bulletSpawnOffset: {x: 0.4, y: 0}
 --- !u!1 &1729890730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,18 +1244,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 8576989336891021351, guid: e48a8bdb811c8dc4a8cd55f23aa1b040, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8944047287054202920, guid: e48a8bdb811c8dc4a8cd55f23aa1b040, type: 3}
-      propertyPath: _shooter
-      value: 
-      objectReference: {fileID: 1646768784}
-    - target: {fileID: 8944047287054202920, guid: e48a8bdb811c8dc4a8cd55f23aa1b040, type: 3}
-      propertyPath: _jumper._force
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8944047287054202920, guid: e48a8bdb811c8dc4a8cd55f23aa1b040, type: 3}
       propertyPath: _jumpingReader
       value: 
@@ -1285,17 +1252,10 @@ PrefabInstance:
       propertyPath: _shootingReader
       value: 
       objectReference: {fileID: 260817066}
-    - target: {fileID: 8944047287054202920, guid: e48a8bdb811c8dc4a8cd55f23aa1b040, type: 3}
-      propertyPath: _health._maxValue
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5193258361416135333, guid: e48a8bdb811c8dc4a8cd55f23aa1b040, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1646768784}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e48a8bdb811c8dc4a8cd55f23aa1b040, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

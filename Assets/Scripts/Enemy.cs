@@ -4,20 +4,40 @@ using System;
 [RequireComponent(typeof(Collider2D))]
 public class Enemy : MonoBehaviour, ISpawnable
 {
-    [SerializeField] private Health _health;
+    [SerializeField] private EnemyData _data;
+    [SerializeField] private Shooter _shooter;
+
+    private Health _health;
+
+    private Timer _timer;
+    private Coroutine _coroutine;
 
     public event Action<ISpawnable> Releasing;
 
-    public Health Health { get { return _health; } }
+    public Health Health => _health;
+    public Shooter Shooter => _shooter;
+
+    public void Awake()
+    {
+        _health = new(_data.MaxHealthAmount);
+        _timer = new();
+    }
 
     private void OnEnable()
     {
-        _health.Initialize();
+        _coroutine = StartCoroutine(_timer.WaitPeriodically(_data.ShootingPeriodicity));
+
+        _timer.TimeOvered += _shooter.Shoot;
         _health.Died += Die;
     }
 
     private void OnDisable()
-        => _health.Died -= Die;
+    {
+        StopCoroutine(_coroutine);
+
+        _timer.TimeOvered -= _shooter.Shoot;
+        _health.Died -= Die;
+    }
 
     private void Die()
         => Releasing?.Invoke(this);

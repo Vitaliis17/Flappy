@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6359002772534399316}
   - component: {fileID: 2013237388329161672}
   - component: {fileID: -456988447940484571}
+  - component: {fileID: -1585649039726639465}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -173,5 +174,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6e24962c060664cbaa432b9abbf433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  _health:
-    _maxValue: 50
+  _data: {fileID: 11400000, guid: cdf88b87816e73e46af1fe67202b81c6, type: 2}
+  _shooter: {fileID: -1585649039726639465}
+--- !u!114 &-1585649039726639465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213627883552620117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18a005a5322e44ead83d73c1eb3966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooter
+  _speedX: 2
+  _bulletSpawnOffset: {x: 0.4, y: 0}

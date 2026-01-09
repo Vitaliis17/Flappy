@@ -17,14 +17,14 @@ public abstract class BaseSpawner<T> : MonoBehaviour where T : Component, ISpawn
     private void OnDisable()
         => Disabling?.Invoke();
 
-    private void Release(ISpawnable element)
+    protected virtual void Release(ISpawnable element)
     {
         element.Releasing -= Release;
 
         Pool.Release((T)element);
     }
 
-    public T GetElement(Vector2 position)
+    public virtual T GetElement(Vector2 position)
     {
         T element = Pool.Get();
 

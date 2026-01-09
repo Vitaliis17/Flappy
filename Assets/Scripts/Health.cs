@@ -1,19 +1,19 @@
 using System;
-using UnityEngine;
 
-[Serializable]
 public class Health
 {
-    [SerializeField, Min(0)] private int _maxValue;
-
     private readonly int _minValue = 0;
 
+    private int _maxValue;
     private int _currentValue;
 
     public event Action Died;
 
-    public void Initialize()
-        => _currentValue = _maxValue;
+    public Health(int maxValue)
+    {
+        _maxValue = maxValue;
+        _currentValue = _maxValue;
+    }
 
     public void TakeDamage(int damage)
     {
