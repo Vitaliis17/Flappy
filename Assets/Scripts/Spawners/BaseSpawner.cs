@@ -11,7 +11,7 @@ public abstract class BaseSpawner<T> : MonoBehaviour where T : Component, ISpawn
 
     public event Action Disabling;
 
-    private void Awake()
+    protected virtual void Awake()
         => Pool = new(Create, GetElement, ReleaseElement, Destroy);
  
     private void OnDisable()

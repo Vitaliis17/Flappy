@@ -3,8 +3,8 @@ using System;
 public class Health
 {
     private readonly int _minValue = 0;
+    private readonly int _maxValue;
 
-    private int _maxValue;
     private int _currentValue;
 
     public event Action Died;

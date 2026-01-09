@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(Collider2D))]
-public class Enemy : MonoBehaviour, ISpawnable
+public class Enemy : MonoBehaviour, ISpawnable, IHealthable
 {
     [SerializeField] private EnemyData _data;
     [SerializeField] private Shooter _shooter;

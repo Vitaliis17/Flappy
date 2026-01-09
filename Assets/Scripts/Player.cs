@@ -1,11 +1,9 @@
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISpawnable, IHealthable
 {
-    [SerializeField] private ButtonReader _jumpingReader;
-    [SerializeField] private ButtonReader _shootingReader;
-
     [SerializeField] private Shooter _shooter;
     [SerializeField] private Jumper _jumper;
 
@@ -14,29 +12,30 @@ public class Player : MonoBehaviour
     private Health _health;
     private Rigidbody2D _rigidbody;
 
-    public Health Health { get { return _health; } }
+    public Health Health => _health;
+    public Shooter Shooter => _shooter;
+
+    public event Action<ISpawnable> Releasing;
 
     private void Awake()
     {
         _health = new(_data.MaxHealthAmount);
+
         _rigidbody = GetComponent<Rigidbody2D>();
+
+        _rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
+        _rigidbody.freezeRotation = true;
     }
 
     private void OnEnable()
-    {
-        _jumpingReader.Pressed += Jump;
-        _shootingReader.Pressed += Shoot;
-    }
+        => _health.Died += Die;
 
     private void OnDisable()
-    {
-        _jumpingReader.Pressed -= Jump;
-        _jumpingReader.Pressed -= Shoot;
-    }
+        => _health.Died -= Die;
 
-    private void Jump()
+    public void Jump()
         => _jumper.Jump(_rigidbody);
 
-    private void Shoot()
-        => _shooter.Shoot();
+    private void Die()
+        => Releasing?.Invoke(this);
 }
