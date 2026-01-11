@@ -1,4 +1,4 @@
-public interface IHealthable
+public interface IHasHealth
 {
     public Health Health { get; }
 }

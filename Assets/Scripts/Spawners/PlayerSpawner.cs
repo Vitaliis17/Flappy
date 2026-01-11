@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class PlayerSpawner : BaseSpawner<Player>
 {
@@ -8,12 +9,13 @@ public class PlayerSpawner : BaseSpawner<Player>
     [SerializeField] private BulletSpawner _bulletSpawner;
     [SerializeField] private Vector2 _position;
 
-    protected override void Awake()
+    public event Action Released;
+
+    public void GetElement()
     {
-        base.Awake();
         Player player = GetElement(_position);
         player.Shooter.Shooting += _bulletSpawner.GetElement;
-        
+
         _jumpingReader.Pressed += player.Jump;
         _shootingReader.Pressed += player.Shooter.Shoot;
     }
@@ -26,8 +28,10 @@ public class PlayerSpawner : BaseSpawner<Player>
 
             _jumpingReader.Pressed -= player.Jump;
             _shootingReader.Pressed -= player.Shooter.Shoot;
-
+            
             base.Release(player);
+
+            Released?.Invoke();
         }
     }
 }

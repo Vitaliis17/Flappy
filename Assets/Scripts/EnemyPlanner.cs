@@ -10,34 +10,47 @@ public class EnemyPlanner : MonoBehaviour
     private List<Enemy> _enemies;
     private Coroutine _coroutine;
 
-    private bool _waveDestroyed;
-
     public event Func<Vector2, Enemy> Spawning;
 
+    private void Awake()
+        => _enemies = new List<Enemy>();
+
     private void OnDisable()
-        => StopCoroutine(_coroutine);
+        => StopSpawning();
 
-    private void Start()
+    public void StopSpawning()
     {
-        _enemies = new List<Enemy>();
-        _coroutine = StartCoroutine(SpawnAll());
-
-        _waveDestroyed = true;
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
     }
 
-    private void FixedUpdate()
-    {
-        _enemies.RemoveAll(enemy => enemy.gameObject.activeSelf == false);
-        _waveDestroyed = _enemies.Count == 0;
-    }
+    public void StartSpawning()
+        => _coroutine = StartCoroutine(SpawnAll());
 
     private IEnumerator SpawnAll()
     {
-        WaitUntil waiting = new(() => _waveDestroyed);
-
-        for(int i = 0; i < _waves.Length; i++)
+        for (int i = 0; i < _waves.Length; i++)
         {
             Spawn(i);
+
+            yield return RemoveInactiveEnemies();
+        }
+    }
+
+    private IEnumerator RemoveInactiveEnemies(int secondFrameAmount = 20)
+    {
+        const float Second = 1;
+
+        float frameTime = Second / secondFrameAmount;
+
+        WaitForSeconds waiting = new(frameTime);
+
+        while(_enemies.Count > 0)
+        {
+            _enemies.RemoveAll(enemy => enemy.gameObject.activeSelf == false);
 
             yield return waiting;
         }
@@ -53,7 +66,5 @@ public class EnemyPlanner : MonoBehaviour
             enemy = Spawning?.Invoke(_waves[waveIndex][i]);
             _enemies.Add(enemy);
         }
-
-        _waveDestroyed = false;
     }
 }

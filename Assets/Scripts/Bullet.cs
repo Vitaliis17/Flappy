@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour, ISpawnable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.TryGetComponent(out IHealthable healthable))
+        if (collision.transform.TryGetComponent(out IHasHealth healthable))
             _attacker.Attack(healthable.Health);
 
         Releasing?.Invoke(this);
