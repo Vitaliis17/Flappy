@@ -8,6 +8,7 @@ public class Player : MonoBehaviour, ISpawnable, IHasHealth
     [SerializeField] private Jumper _jumper;
 
     [SerializeField] private PlayerData _data;
+    [SerializeField] private Faller _faller;
 
     private Rigidbody2D _rigidbody;
 
@@ -35,7 +36,10 @@ public class Player : MonoBehaviour, ISpawnable, IHasHealth
         => Health.Died -= Die;
 
     public void Jump()
-        => _jumper.Jump(_rigidbody);
+    {
+        _jumper.Jump(_rigidbody);
+        _faller.SetMaxRotation();
+    }
 
     private void Die()
         => Releasing?.Invoke(this);

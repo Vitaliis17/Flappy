@@ -7,6 +7,6 @@ public class Mover
     public Mover(Rigidbody2D rigidbody)
         => _rigidbody = rigidbody;
 
-    public void SetSpeed(float speed)
-        => _rigidbody.linearVelocityX = speed;
+    public void SetSpeed(Vector3 speed)
+        => _rigidbody.linearVelocity = speed;
 }

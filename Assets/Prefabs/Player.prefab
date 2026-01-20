@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3371857739764251041}
   - component: {fileID: 8944047287054202920}
   - component: {fileID: 2235878446818299650}
+  - component: {fileID: -6154488733339207323}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -202,12 +203,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca0d4de7c849fd42b1b1cd71118e704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  _jumpingReader: {fileID: 0}
-  _shootingReader: {fileID: 0}
   _shooter: {fileID: 2235878446818299650}
   _jumper:
     _force: 5
   _data: {fileID: 11400000, guid: 1e384773a01bb2b40befb400b6a9f03a, type: 2}
+  _faller: {fileID: -6154488733339207323}
 --- !u!114 &2235878446818299650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,5 +220,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c18a005a5322e44ead83d73c1eb3966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
-  _speedX: 2
-  _bulletSpawnOffset: {x: 0.4, y: 0}
+  _speedX: 4
+  _bulletSpawnOffset: {x: 0.5, y: 0}
+--- !u!114 &-6154488733339207323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193258361416135333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8ddce337c76c842ac982cd6197c0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Faller
+  _data: {fileID: 11400000, guid: 614ab646a9d2fb54c8a0c1fe7907bd18, type: 2}
+  _speed: 0.8
